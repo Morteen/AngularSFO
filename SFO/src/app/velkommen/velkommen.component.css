@@ -1,0 +1,20 @@
+#content{
+    margin-top:10px;
+    background-image:url('../../assets/images/hollaskole.jpg');
+    height: 800px;
+    width: 600px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: auto;
+    padding: 10px;
+   
+}
+h1{
+    font-family: 'Lato', sans-serif;
+    margin: auto;
+   
+}
+p{
+    font-family: 'Lato', sans-serif;
+    margin: 10px;
+}
