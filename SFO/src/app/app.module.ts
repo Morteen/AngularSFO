@@ -12,6 +12,7 @@ import { VisAlleEleverComponent } from './vis-alle-elever/vis-alle-elever.compon
 import { RegElevComponent } from './reg-elev/reg-elev.component';
 import {RouterModule,Routes} from '@angular/router';
 import { VelkommenComponent } from './velkommen/velkommen.component';
+import { FooterComponent } from './footer.component/footer.component';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { VelkommenComponent } from './velkommen/velkommen.component';
     SjekkInnComponent,
     VisAlleEleverComponent,
     VelkommenComponent,
-    
+    FooterComponent
     
   ],
   imports: [
