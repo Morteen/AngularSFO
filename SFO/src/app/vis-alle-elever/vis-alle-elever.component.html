@@ -1,3 +1,5 @@
-<p>
-  vis-alle-elever works!
-</p>
+<ul *ngFor="let elev of elever">
+  <li>Navn: {{elev.fname}} {{elev.ename}} Klasse: {{elev.trinn}}{{elev.klasse}}  Sjekk inn:{{elev.attendens[0].dato}}
+    {{elev.attendens[0].sjekkInn}}
+  </li>
+</ul>

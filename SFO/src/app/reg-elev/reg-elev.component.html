@@ -1,3 +1,25 @@
-<p>
-  reg-elev works!
-</p>
+<div id="container"> 
+<form id="myForm">
+  
+     <div class="form-group">
+  <input type="text"placeholder="Fornavn" class="form-control"#fname/>
+  <input  class="form-control"placeholder="Etternavn" type="text"#ename>
+ 
+ 
+  
+  <input  class="form-control"placeholder="Trinn"type="number"#trinn>
+  <input  class="form-control"placeholder="Klasse"type="text"#klasse>
+ 
+ 
+ 
+  <input  class="form-control"placeholder="Telefon"type="number"#konTlf>
+   <textarea name="" id="" cols="30" rows="10"class="form-control"placeholder="Spesielle opplysninger"type="text"#info></textarea>
+                  <!--fname,ename,trinn,klasse,kontaktTlf,info-->
+                 </div>
+ <button id="btn" class="btn btn-success" type="submit"(click)="addElev(fname.value,ename.value,trinn.value,klasse.value,konTlf.value,info.value)">Ny elev</button>
+ 
+ </form>
+</div>
+
+ 
+ 

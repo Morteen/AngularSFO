@@ -4,6 +4,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from './material.module';
 
 
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 
@@ -13,6 +14,7 @@ import { RegElevComponent } from './reg-elev/reg-elev.component';
 import {RouterModule,Routes} from '@angular/router';
 import { VelkommenComponent } from './velkommen/velkommen.component';
 import { FooterComponent } from './footer.component/footer.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -30,6 +32,7 @@ import { FooterComponent } from './footer.component/footer.component';
     BrowserModule,
     NgbModule.forRoot(),
     MaterialModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path:'start', component:VelkommenComponent},
       {path:'visAlle', component:VisAlleEleverComponent},

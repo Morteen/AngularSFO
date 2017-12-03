@@ -5,6 +5,7 @@
     width:80%;
     margin:auto;
     overflow:hidden;
+    margin-bottom: 10px;
 }
 #main-header{
     background-color:coral;
@@ -29,12 +30,4 @@
    text-decoration:none;
    padding-right:15px;
    font-size:18px;
-}
-#showcase{
-    background-image:url('../../assets/images/bilde.jpg');
-    
-    background-position:center right;
-    min-height:300px;
-    margin-bottom:30px;
-    text-align:center;
 }

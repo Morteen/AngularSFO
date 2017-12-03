@@ -1,0 +1,102 @@
+[
+    {
+    "fname": "Morten",
+    "ename": "Olsen",
+    "tlf": "40042106",
+    "info": "Ingen",
+    "trinn":10,
+    "klasse":"B",
+    "attendens": [ 
+        {
+            "dato": "11.11.2017",
+            "sjekkInn": "10.00",
+            "sjekkUt": "16.00"
+        },
+        {
+            "dato": "10.11.2017",
+            "sjekkInn": "09.00",
+            "sjekkUt": "15.00"
+        },
+        {
+            "dato": "08.11.2017",
+            "sjekkInn": "09.30",
+            "sjekkUt": "15.30"
+        }
+
+    ]
+},
+{
+    "fname": "Gry",
+    "ename": " Kvilekval Olsen",
+    "tlf": "93083411",
+    "info": "Kona",
+    "trinn":9,
+    "klasse":"A",
+    "attendens": [ 
+    {
+        "dato": "11.11.2017",
+        "sjekkInn": "10.15",
+        "sjekkUt": "16.05"
+    },
+    {
+        "dato": "10.11.2017",
+        "sjekkInn": "09.10",
+        "sjekkUt": "15.20"
+    },
+    {
+        "dato": "08.11.2017",
+        "sjekkInn": "09.38",
+        "sjekkUt": "15.35"
+    }
+]
+},
+{
+    "fname": "Maria",
+    "ename": " Kvilekval Olsen",
+    "tlf": "93083411",
+    "info": "Datter",
+    "trinn":7,
+    "klasse":"C",
+    "attendens": [ 
+    {
+        "dato": "11.11.2017",
+        "sjekkInn": "10.13",
+        "sjekkUt": "16.30"
+    },
+    {
+        "dato": "10.11.2017",
+        "sjekkInn": "09.12",
+        "sjekkUt": "15.33"
+    },
+    {
+        "dato": "08.11.2017",
+        "sjekkInn": "09.40",
+        "sjekkUt": "15.45"
+    }
+]
+},{
+    "fname": "Julie",
+    "ename": " Kvilekval Olsen",
+    "tlf": "93083411",
+    "info": "Største Datter",
+    "trinn":8,
+    "klasse":"B",
+    "attendens": [ 
+    {
+        "dato": "11.11.2017",
+        "sjekkInn": "10.30",
+        "sjekkUt": "16.28"
+    },
+    {
+        "dato": "10.11.2017",
+        "sjekkInn": "09.16",
+        "sjekkUt": "15.48"
+    },
+    {
+        "dato": "08.11.2017",
+        "sjekkInn": "09.41",
+        "sjekkUt": "15.44"
+    }
+]
+}
+]
