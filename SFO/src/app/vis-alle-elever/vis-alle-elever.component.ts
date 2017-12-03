@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { EleverService } from '../elever.service';
+
 
 @Component({
   selector: 'app-vis-alle-elever',
@@ -7,21 +9,18 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./vis-alle-elever.component.css']
 })
 export class VisAlleEleverComponent implements OnInit {
+  elever:Elev;
+
+ 
 
 
-elever:Elev;
 
-
-  constructor(private http:HttpClient) { }
+  constructor(private elevService:EleverService) { }
+  
 
   ngOnInit() {
-
-    this.http.get<Elev>("../../assets/json/elever.json").subscribe(data => {
-      // Read the result field from the JSON response.
-      this.elever = data;
-      console.log("Dette er konsol.log av elever"+this.elever)
-      });
-
+  this.elever=this.elevService.visAlleElever();
+    
   }
 
 
@@ -44,4 +43,13 @@ interface Elev{
 
   ]
 }
+
+/*this.http.get<Elev>("../../assets/json/elever.json").subscribe(data => {
+  // Read the result field from the JSON response.
+  this.elever = data;
+  console.log("Dette er konsol.log av elever"+this.elever)
+  });
+
+
+*/
 

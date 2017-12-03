@@ -1,5 +1,6 @@
 [
     {
+        "id":1,
     "fname": "Morten",
     "ename": "Olsen",
     "tlf": "40042106",
@@ -26,6 +27,7 @@
     ]
 },
 {
+    "id":2,
     "fname": "Gry",
     "ename": " Kvilekval Olsen",
     "tlf": "93083411",
@@ -51,6 +53,7 @@
 ]
 },
 {
+    "id":3,
     "fname": "Maria",
     "ename": " Kvilekval Olsen",
     "tlf": "93083411",
@@ -75,6 +78,7 @@
     }
 ]
 },{
+    "id":4,
     "fname": "Julie",
     "ename": " Kvilekval Olsen",
     "tlf": "93083411",

@@ -15,6 +15,8 @@ import {RouterModule,Routes} from '@angular/router';
 import { VelkommenComponent } from './velkommen/velkommen.component';
 import { FooterComponent } from './footer.component/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EleverService } from './elever.service';
+import { OppmoteComponent } from './oppmote/oppmote.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
     SjekkInnComponent,
     VisAlleEleverComponent,
     VelkommenComponent,
-    FooterComponent
+    FooterComponent,
+    OppmoteComponent,
+    
     
   ],
   imports: [
@@ -38,6 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
       {path:'visAlle', component:VisAlleEleverComponent},
       {path:'sjekkInn', component:SjekkInnComponent},
       {path:'regNy', component:RegElevComponent},
+      {path:'oppmote/:id', component: OppmoteComponent},
      
       { path: '',   redirectTo: '/start', pathMatch: 'full' }
       
@@ -46,7 +51,7 @@ import { HttpClientModule } from '@angular/common/http';
     
    
   ],
-  providers: [],
+  providers: [EleverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
