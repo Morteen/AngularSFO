@@ -1,7 +1,10 @@
 <ul *ngFor="let elev of elever">
   <li>Navn: {{elev.fname}} {{elev.ename}} Klasse: {{elev.trinn}}{{elev.klasse}} 
  
-  <a [routerLink]="['/oppmote', elev.id]" routerLinkActive="active"><button>Vis oppmøte</button></a>
-  
+  <a [routerLink]="['/oppmote', elev.id]" routerLinkActive="active"> <button type="button" class="btn btn-link">Vis oppmøte </button></a>|
+ 
+  <!--<button type="button" class="btn btn-link"(click)="openDialog()">Rediger elev </button>-->
+  <button mat-button (click)="openDialog()">Rediger elev </button>
   </li>
 </ul>
+

@@ -38,7 +38,7 @@ visEn(id:number){
       alert("Det er ikke noe data")
     }else{ this.elever = data;
       this.navn=this.elever[id].fname+" "+this.elever[id].ename;
-      this.attendens=this.elever.attendens;
+      this.attendens=this.elever[id].attendens;
       if(this.elever.attendens!=null){
         alert("json levere");
       }

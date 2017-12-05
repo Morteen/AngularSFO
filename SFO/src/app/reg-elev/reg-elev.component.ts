@@ -40,6 +40,8 @@ export class RegElevComponent implements OnInit {
   }
   
   }
+  
+  
   interface Elev{
     fname:string,
     ename:string;
@@ -48,5 +50,3 @@ export class RegElevComponent implements OnInit {
     kontaktTlf:number,
     info:string
   }
-  
-}

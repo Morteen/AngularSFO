@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { EleverService } from './elever.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,33 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  elever:Elev;
+  test:any[];
+  constructor(private elevService:EleverService){}
+  ngOnInit(){
+    
+   
+   
+   
+  }
+  skaffElevliste(liste:Elev){
+    
+   
+  }
+}
+interface Elev{
+  fname:string,
+  ename:string,
+  tlf:string,
+  info:string,
+  trinn:number,
+  klasse:string,
+  attendens:[{
+    dato:Date,
+    sjekkinn:DateTimeFormat,
+    sjekkUt:DateTimeFormat
+
+  }
+
+  ]
 }

@@ -2,12 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from './material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-
+import { FormsModule } from '@angular/forms';
 import { SjekkInnComponent } from './sjekk-inn/sjekk-inn.component';
 import { VisAlleEleverComponent } from './vis-alle-elever/vis-alle-elever.component';
 import { RegElevComponent } from './reg-elev/reg-elev.component';
@@ -17,6 +18,9 @@ import { FooterComponent } from './footer.component/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EleverService } from './elever.service';
 import { OppmoteComponent } from './oppmote/oppmote.component';
+import{PopupModule}from'ng2-opd-popup';
+import { MyDialogComponent } from './my-dialog/my-dialog.component';
+
 
 
 @NgModule({
@@ -29,6 +33,9 @@ import { OppmoteComponent } from './oppmote/oppmote.component';
     VelkommenComponent,
     FooterComponent,
     OppmoteComponent,
+    MyDialogComponent,
+  
+   
     
     
   ],
@@ -37,6 +44,10 @@ import { OppmoteComponent } from './oppmote/oppmote.component';
     NgbModule.forRoot(),
     MaterialModule,
     HttpClientModule,
+    FormsModule ,
+    BrowserAnimationsModule,
+   
+   
     RouterModule.forRoot([
       {path:'start', component:VelkommenComponent},
       {path:'visAlle', component:VisAlleEleverComponent},
@@ -51,6 +62,8 @@ import { OppmoteComponent } from './oppmote/oppmote.component';
     
    
   ],
+  entryComponents:[MyDialogComponent,],
+  
   providers: [EleverService],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,5 @@
-<p>
-  sjekk-inn works!
-</p>
+<ul *ngFor="let elev of liste">
+  <li>
+    Navn: {{elev.fname}} {{elev.ename}} klasse: {{elev.trinn}}{{elev.klasse}} <button (click)="reg(elev.id)">{{regKnptekst}}</button>
+  </li>
+  </ul>

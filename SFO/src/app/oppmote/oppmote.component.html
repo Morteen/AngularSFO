@@ -1,7 +1,8 @@
-<p> 
+<h4> 
 {{navn}}
-</p>
-<ul *ngFor="let att of elever[3].attendens">
+</h4>
+<a routerLink="/visAlle" routerLinkActive="active">'<<'Tilbake</a>
+<ul *ngFor="let att of attendens">
 <li>Dato:{{att.dato}} Sjekket inn klokken: {{att.sjekkInn}} Sjekket ut klokken:{{att.sjekkUt}}</li>
 </ul>
 
