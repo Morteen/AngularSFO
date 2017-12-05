@@ -12,7 +12,8 @@ elev:Elev;
   constructor(private elevService:EleverService, public dialogRef:MatDialogRef<MyDialogComponent>,@Inject(MAT_DIALOG_DATA)public data:number ){ }
 
 
-  onCloseConfirm(){
+  onCloseConfirm(id:number,fname:string,ename:string,trinn:number,klasse:string,tlf:string,info:string){
+    this.elevService.oppdater(id,fname,ename,trinn,klasse,tlf,info);
 this.dialogRef.close('Confirm');
   }
   onCloseCancle(){

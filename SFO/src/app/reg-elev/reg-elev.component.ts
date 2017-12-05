@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { EleverService } from '../elever.service';
 
 @Component({
   selector: 'app-reg-elev',
@@ -10,7 +11,7 @@ export class RegElevComponent implements OnInit {
 
   elev:Elev;
   elever:Elev[];
-    constructor() { }
+    constructor(private elevService:EleverService) { }
   
     ngOnInit() {
       this.elev={
@@ -20,7 +21,7 @@ export class RegElevComponent implements OnInit {
       klasse:'B',
       kontaktTlf:40042106,
       info:'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.'
-    
+  
     }
     this.elever=[this.elev];
     }
@@ -33,11 +34,20 @@ export class RegElevComponent implements OnInit {
   kontaktTlf:konTlf,
   info:info
   }
+
+
   this.elever.push(this.elev);
   console.log(this.elever.length);
   alert(this.elev.fname);
     return false;
   }
+
+test(fname: string, ename: string, tlf: string, info: string, trinn: number, klasse: string){
+  this.elevService.postEnElev(fname,ename, tlf, info, trinn, klasse);
+}
+
+
+
   
   }
   

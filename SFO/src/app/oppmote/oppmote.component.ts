@@ -31,8 +31,9 @@ this.visEn(this.id-1);
 ngOnDestroy() {
   this.sub.unsubscribe();
 }
+//../../assets/json/elever.json
 visEn(id:number){
-  this.http.get<Elev>("../../assets/json/elever.json").subscribe(data => {
+  this.http.get<Elev>("http://localhost:3000/Elever/id").subscribe(data => {
     // Read the result field from the JSON response.
     if(data==null){
       alert("Det er ikke noe data")

@@ -34,8 +34,9 @@ openDialog(id:number){
   
       });
   dialogref.afterClosed().subscribe(result=>{
-    console.log('Dialogen stengt: ${result}')
+    console.log('"Dialogen stengt: "${result}')
     this.dialogResult=result;
+    this.upDatelist(8,"Test","#####","67893");
   })
   
 }
@@ -43,7 +44,11 @@ openDialog(id:number){
     visAlle(){
       return this.elever;
     }
-    
+    upDatelist(id:number,fname:string,ename:string,tlf:string){
+      this.elever[id-1].fname=fname,
+      this.elever[id-1].ename=fname,
+      this.elever[id-1].tlf=tlf
+    }
   
     
 

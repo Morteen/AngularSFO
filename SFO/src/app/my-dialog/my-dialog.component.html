@@ -1,5 +1,5 @@
 
- <h4 mat-dialog-title>Edit {{elev[data].fname}}{{elev[data].ename}}</h4>
+ <h4 mat-dialog-title>Endre opplysningene om:<br> {{elev[data].fname}} {{elev[data].ename}}</h4>
  <div mat-dialog-content>
    
   
@@ -9,23 +9,35 @@
       
         <table class="example-full-width" cellspacing="0"><tr>
           <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="{{elev[data].fname}}">
+            <input matInput placeholder="{{elev[data].fname}}"#fname>
           </mat-form-field></td>
           <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="{{elev[data].ename}}">
+            <input matInput placeholder="{{elev[data].ename}}"#ename>
           </mat-form-field></td>
-        </tr></table>
+        </tr>
+        <tr>
+            <td><mat-form-field class="example-full-width">
+                <input matInput placeholder="{{elev[data].trinn}}"#trinn>
+              </mat-form-field>
+            </td>
+            <td><mat-form-field class="example-full-width">
+                <input matInput placeholder="{{elev[data].klasse}}"#klasse>
+              </mat-form-field></td>
+
+        </tr>
+      </table>
       
         <p>
+            <mat-form-field class="example-full-width">
+                <input  matInput placeholder="Telefon"#tlf>
+              </mat-form-field>
           <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
+            <textarea matInput placeholder="Info"#info></textarea>
           </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="Address 2"></textarea>
-          </mat-form-field>
+          
         </p>
       
-        <table class="example-full-width" cellspacing="0"><tr>
+        <!--<table class="example-full-width" cellspacing="0"><tr>
           <td><mat-form-field class="example-full-width">
             <input matInput placeholder="City">
           </mat-form-field></td>
@@ -36,7 +48,7 @@
             <input matInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
             <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
           </mat-form-field></td>
-        </tr></table>
+        </tr></table>-->
       </form>
 
 
@@ -47,7 +59,7 @@
 
  </div>
  <div mat-dialog-actions>
-   <button mat-button (click)="onCloseConfirm()" >Confirm</button>
-   <button mat-button (click)="onCloseCancle()" >Cancle</button>
- </div>-
+   <button mat-button (click)="onCloseConfirm(data,fname.value,ename.value,trinn.value,klasse.value,tlf.value,info.value)">Confirm</button>
+   <button mat-button (click)="onCloseCancle()">Cancle</button>
+ </div>
  

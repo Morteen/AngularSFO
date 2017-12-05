@@ -18,7 +18,7 @@ import { FooterComponent } from './footer.component/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EleverService } from './elever.service';
 import { OppmoteComponent } from './oppmote/oppmote.component';
-import{PopupModule}from'ng2-opd-popup';
+
 import { MyDialogComponent } from './my-dialog/my-dialog.component';
 
 
