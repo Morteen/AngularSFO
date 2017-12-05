@@ -27,9 +27,11 @@ export class VisAlleEleverComponent implements OnInit {
     }
 
 openDialog(id:number){
+  console.log(id);
   let dialogref= this.dialog.open(MyDialogComponent,{
     width:'600px',
-    data:'Dette er data fra dialogboxen',
+    data:id-1,
+  
       });
   dialogref.afterClosed().subscribe(result=>{
     console.log('Dialogen stengt: ${result}')

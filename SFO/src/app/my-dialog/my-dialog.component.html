@@ -1,5 +1,5 @@
 
- <h1 mat-dialog-title>Hei Morten</h1>
+ <h4 mat-dialog-title>Edit {{elev[data].fname}}{{elev[data].ename}}</h4>
  <div mat-dialog-content>
    
   
@@ -9,10 +9,10 @@
       
         <table class="example-full-width" cellspacing="0"><tr>
           <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="{{elev[0].fname}}">
+            <input matInput placeholder="{{elev[data].fname}}">
           </mat-form-field></td>
           <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="{{elev[0].ename}}">
+            <input matInput placeholder="{{elev[data].ename}}">
           </mat-form-field></td>
         </tr></table>
       

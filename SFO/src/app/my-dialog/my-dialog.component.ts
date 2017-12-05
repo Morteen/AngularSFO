@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { inject } from '@angular/core/testing';
 import { EleverService } from '../elever.service';
@@ -9,7 +9,7 @@ import { EleverService } from '../elever.service';
 })
 export class MyDialogComponent implements OnInit {
 elev:Elev;
-  constructor(private elevService:EleverService, public dialogRef:MatDialogRef<MyDialogComponent> ){ }
+  constructor(private elevService:EleverService, public dialogRef:MatDialogRef<MyDialogComponent>,@Inject(MAT_DIALOG_DATA)public data:number ){ }
 
 
   onCloseConfirm(){
