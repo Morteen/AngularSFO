@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { EleverService } from '../elever.service';
+
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { EleverService } from '../elever.service';
 
 @Component({
   selector: 'app-oppmote',
@@ -9,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./oppmote.component.css']
 })
 export class OppmoteComponent implements OnInit,OnDestroy {
+ 
   elever:Elev;
   elev:Elev;
   attendens:any[];
@@ -17,14 +19,14 @@ export class OppmoteComponent implements OnInit,OnDestroy {
  id: number;
  private sub: any;
 
-  constructor(private http:HttpClient,private route: ActivatedRoute) { }
+  constructor(private http:HttpClient,private route: ActivatedRoute,eleverService:EleverService) { }
   
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
     });
-   
-this.visEn(this.id-1);
+  
+this.visEn(this.id);
 
 
 }
@@ -33,13 +35,13 @@ ngOnDestroy() {
 }
 //../../assets/json/elever.json
 visEn(id:number){
-  this.http.get<Elev>("http://localhost:3000/Elever/id").subscribe(data => {
+  this.http.get<Elev>("http://localhost:3000/Elever/"+id).subscribe(data => {
     // Read the result field from the JSON response.
     if(data==null){
       alert("Det er ikke noe data")
-    }else{ this.elever = data;
-      this.navn=this.elever[id].fname+" "+this.elever[id].ename;
-      this.attendens=this.elever[id].attendens;
+    }else{ this.elev = data;
+      this.navn=this.elev.fname+" "+this.elev.ename;
+      this.attendens=this.elev.attendens;
       if(this.elever.attendens!=null){
         alert("json levere");
       }
@@ -47,7 +49,7 @@ visEn(id:number){
    
     
    
-    console.log("Dette er konsol.log av elever"+this.elever[id])
+    console.log("Dette er konsol.log av elever"+this.elev)
     });
   
 

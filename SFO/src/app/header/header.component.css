@@ -15,6 +15,9 @@
 #navbar{
     background-color:#333;
     color:#fff;
+    width: 99%;
+    border-radius: 10px;
+    margin:auto;
 }
 #navbar ul{
     padding:0;

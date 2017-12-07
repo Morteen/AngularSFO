@@ -1,8 +1,39 @@
 <h4> 
 {{navn}}
 </h4>
-<a routerLink="/visAlle" routerLinkActive="active">'<<'Tilbake</a>
-<ul *ngFor="let att of attendens">
+<a routerLink="/visAlle" routerLinkActive="active" class="back"><i class="fa fa-arrow-left back" aria-hidden="true"></i>Back</a>
+<!--<ul *ngFor="let att of attendens">
 <li>Dato:{{att.dato}} Sjekket inn klokken: {{att.sjekkInn}} Sjekket ut klokken:{{att.sjekkUt}}</li>
-</ul>
+</ul>-->
+<div id="table-container">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                
+                <th scope="col">Dato</th>
+                <th scope="col">Sjekket inn</th>
+                <th scope="col">Sjekket ut</th>
+                
+               
+               
+               
+              </tr>
+            </thead>
+            <tbody *ngFor="let att of attendens">
+              <tr>
+               
+               
+                <td>{{att.dato}}</td>
+                <td>{{att.sjekkInn}}</td>
+                <td>{{att.sjekkUt}}</td>
+               
+                
+        
+                
+               
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
 

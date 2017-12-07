@@ -1,0 +1,14 @@
+button{
+    border-radius:20px;
+    margin-left:5px;
+}
+body{ 
+    padding:10px;
+    background-color: #fefefea4;
+    border:2px solid;
+    border-radius:30px;
+
+}
+p{
+    font-family: 'Lato', sans-serif;
+}

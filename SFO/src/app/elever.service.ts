@@ -4,7 +4,9 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class EleverService {
   elever: Elev;
+  elev:Elev;
   body: Elev;
+
   attendens: any[];
   constructor(private http: HttpClient) { }
 
@@ -18,20 +20,14 @@ export class EleverService {
     return this.elever;
   }
 
-  visEnElev() {
-    //http://localhost:3000/Elever
-    //../assets/json/elever.json
-    this.http.get<Elev>("http://localhost:3000/Elever").subscribe(data => {
-      // Read the result field from the JSON response.
-      this.elever = data[0];
-
-      return this.elever;
-
-
-    });
-    console.log("Dette er loggen for en elev fra Elevservice" + this.elever)
-
-  };
+ visEn(id:number){
+    this.http.get<Elev>("http://localhost:3000/Elever/"+id).subscribe(data => {
+    
+      this.elev=data;
+     
+        });
+       return this.elev;
+      }
 
   postEnElev(fname: string, ename: string, tlf: string, info: string, trinn: number, klasse: string) {
     
@@ -60,6 +56,7 @@ export class EleverService {
   oppdater(id:number,fname:string,ename:string,trinn:number,klasse:string,tlf:string,info:string){
 
     const body={
+      
       fname:fname,
       ename:ename,
       tlf:tlf,
@@ -67,8 +64,9 @@ export class EleverService {
       trinn:trinn,
       klasse:klasse
     }
+    const index=id+1;
 
-    this.http.put("http://localhost:3000/Elever/"+id,body).subscribe(data => {
+    this.http.put("http://localhost:3000/Elever/"+index,body).subscribe(data => {
       
       
       

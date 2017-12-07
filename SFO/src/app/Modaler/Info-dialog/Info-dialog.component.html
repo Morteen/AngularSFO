@@ -1,0 +1,12 @@
+<body> 
+  <h4>Opplysninger for {{elev[data].fname}} {{elev[data].ename}}</h4>
+<p>Kontakt telefon til pårørende: {{elev[data].tlf}}</p>
+<hr>
+<p>
+  Spesielle opplysninger:<br>
+  {{elev[data].info}}
+</p>
+
+<button mat-button (click)="onCloseConfirm()">Lukk</button>
+<!--<button mat-button (click)="onCloseCancle()">Cancle</button>-->
+</body>

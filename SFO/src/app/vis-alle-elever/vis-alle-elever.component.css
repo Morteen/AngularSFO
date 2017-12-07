@@ -1,3 +1,14 @@
 ul{
     list-style: none;
 }
+#table-container{
+    width: 90%;
+  
+    margin:auto;
+}
+table{
+    font-family: 'Lato', sans-serif;
+}
+td{
+   
+}

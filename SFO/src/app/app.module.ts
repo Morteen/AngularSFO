@@ -18,8 +18,9 @@ import { FooterComponent } from './footer.component/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EleverService } from './elever.service';
 import { OppmoteComponent } from './oppmote/oppmote.component';
-
+import { ChangeDetectorRef } from '@angular/core';
 import { MyDialogComponent } from './my-dialog/my-dialog.component';
+import { InfoDialogComponent } from './Modaler/Info-dialog/Info-dialog.component';
 
 
 
@@ -34,6 +35,7 @@ import { MyDialogComponent } from './my-dialog/my-dialog.component';
     FooterComponent,
     OppmoteComponent,
     MyDialogComponent,
+    InfoDialogComponent
   
    
     
@@ -46,6 +48,8 @@ import { MyDialogComponent } from './my-dialog/my-dialog.component';
     HttpClientModule,
     FormsModule ,
     BrowserAnimationsModule,
+    
+   
    
    
     RouterModule.forRoot([
@@ -62,7 +66,7 @@ import { MyDialogComponent } from './my-dialog/my-dialog.component';
     
    
   ],
-  entryComponents:[MyDialogComponent,],
+  entryComponents:[MyDialogComponent,InfoDialogComponent],
   
   providers: [EleverService],
   bootstrap: [AppComponent]

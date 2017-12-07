@@ -1,10 +1,42 @@
-<ul *ngFor="let elev of elever">
+<!--<ul *ngFor="let elev of elever">
   <li>Navn: {{elev.fname}} {{elev.ename}} Klasse: {{elev.trinn}}{{elev.klasse}} 
  
   <a [routerLink]="['/oppmote', elev.id]" routerLinkActive="active"> <button type="button" class="btn btn-link">Vis oppmøte </button></a>|
  
-  <!--<button type="button" class="btn btn-link"(click)="openDialog()">Rediger elev </button>-->
+  
   <button mat-button color="accent" (click)="openDialog(elev.id)">Rediger elev </button>
   </li>
-</ul>
+</ul>-->
+<div id="table-container">
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Fornavn</th>
+        <th scope="col">Etternavn</th>
+        <th scope="col">Klasse</th>
+        <th scope="col">Kontakt telefon</th>
+       
+       <th></th>
+       
+      </tr>
+    </thead>
+    <tbody *ngFor="let elev of elever">
+      <tr>
+        <th scope="row">{{elev.id}}</th>
+       
+        <td>{{elev.fname}}</td>
+        <td>{{elev.ename}}</td>
+        <td>{{elev.trinn}}{{elev.klasse}}</td>
+        <td>{{elev.tlf}}</td>
+        <td> <a [routerLink]="['/oppmote', elev.id]" routerLinkActive="active"> <button type="button" class="btn btn-link">Vis oppmøte </button></a>|
+        <button mat-button color="accent" (click)="openDialog(elev.id)">Rediger elev </button>|
+        <button mat-button color="accent" (click)="openInfoDialog(elev.id)">Vis info</button></td>
 
+        
+       
+      </tr>
+      
+    </tbody>
+  </table>
+</div>

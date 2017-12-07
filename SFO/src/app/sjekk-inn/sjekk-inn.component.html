@@ -1,5 +1,37 @@
-<ul *ngFor="let elev of liste">
+<!--<ul *ngFor="let elev of liste">
   <li>
     Navn: {{elev.fname}} {{elev.ename}} klasse: {{elev.trinn}}{{elev.klasse}} <button (click)="reg(elev.id)">{{regKnptekst}}</button>
   </li>
-  </ul>
+  </ul>-->
+  <div id="table-container">
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Navn</th>
+              
+              <th scope="col">Klasse</th>
+              <th scope="col">Kontakt telefon</th>
+             <th>
+      
+             </th>
+             <th></th>
+             
+            </tr>
+          </thead>
+          <tbody *ngFor="let elev of liste">
+            <tr>
+              <th scope="row">{{elev.id}}</th>
+             
+              <td>{{elev.fname}} {{elev.ename}}</td>
+              
+              <td>{{elev.trinn}}{{elev.klasse}}</td>
+              <td>{{elev.tlf}}</td>
+             
+              <td><button type="button" class="btn btn-danger"(click)="reg(elev.id)"> {{regKnptekst}} </button>  </td>
+             
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
