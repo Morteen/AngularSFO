@@ -53,7 +53,7 @@ import { InfoDialogComponent } from './Modaler/Info-dialog/Info-dialog.component
    
    
     RouterModule.forRoot([
-      {path:'start', component:VelkommenComponent},
+      {path:'start',component:VelkommenComponent},
       {path:'visAlle', component:VisAlleEleverComponent},
       {path:'sjekkInn', component:SjekkInnComponent},
       {path:'regNy', component:RegElevComponent},

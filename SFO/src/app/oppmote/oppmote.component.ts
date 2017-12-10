@@ -9,68 +9,60 @@ import { EleverService } from '../elever.service';
   templateUrl: './oppmote.component.html',
   styleUrls: ['./oppmote.component.css']
 })
-export class OppmoteComponent implements OnInit,OnDestroy {
- 
-  elever:Elev;
-  elev:Elev;
-  attendens:any[];
- navn:string;
+export class OppmoteComponent implements OnInit, OnDestroy {
 
- id: number;
- private sub: any;
+  elever: Elev;
+  elev: Elev;
+  //att: Attendens;
+  navn: string;
+  id: number;
+  private sub: any;
+  attendens:Attendens ;
+  test:string;
+tabell:any[];
+  constructor(private route: ActivatedRoute, private eleverService: EleverService) { }
 
-  constructor(private http:HttpClient,private route: ActivatedRoute,eleverService:EleverService) { }
-  
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
     });
+    console.log("Dette er loggen for Id oppmøte"+ this.id);//virker
+/*
+    //this.elever= this.eleverService.visAlleElever();//virker
+    this.attendens = this.eleverService.visAttendens(this.id);
+    //this.tabell=[this.attendens];
+    //this.test=""+this.attendens[0].dato+" Lengde:"+this.tabell.length
+    console.log("Dette er loggen for ATT oppmøte"+ this.attendens);
+    this.elev=this.eleverService.visEn(this.id);
+    this.navn = this.elev.fname + " " + this.elev.ename;
+    console.log("Dette er loggen for navn i oppmøte"+ this.navn+" Dette er lengden på tabellen "+this.tabell.length);
+
+
+  }*/
   
-this.visEn(this.id);
-
-
-}
-ngOnDestroy() {
-  this.sub.unsubscribe();
-}
-//../../assets/json/elever.json
-visEn(id:number){
-  this.http.get<Elev>("http://localhost:3000/Elever/"+id).subscribe(data => {
-    // Read the result field from the JSON response.
-    if(data==null){
-      alert("Det er ikke noe data")
-    }else{ this.elev = data;
-      this.navn=this.elev.fname+" "+this.elev.ename;
-      this.attendens=this.elev.attendens;
-      if(this.elever.attendens!=null){
-        alert("json levere");
-      }
-    }
-   
-    
-   
-    console.log("Dette er konsol.log av elever"+this.elev)
-    });
-  
-
-}
-
-}
-interface Elev{
-  fname:string,
-  ename:string,
-  tlf:string,
-  info:string,
-  trinn:number,
-  klasse:string,
-  attendens:[{
-    dato:Date,
-    sjekkinn:DateTimeFormat,
-    sjekkUt:DateTimeFormat
-
+  }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
-  ]
+
+}
+interface Elev {
+  fname: string,
+  ename: string,
+  tlf: string,
+  info: string,
+  trinn: number,
+  klasse: string,
+
+}
+interface Attendens {
+
+  dato: Date;
+  sjekkInn: Date,
+  sjekkUt: Date
+
+
 }
 
 

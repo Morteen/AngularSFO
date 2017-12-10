@@ -61,12 +61,5 @@ interface Elev{
   info:string,
   trinn:number,
   klasse:string,
-  attendens:[{
-    dato:Date,
-    sjekkinn:DateTimeFormat,
-    sjekkUt:DateTimeFormat
-
-  }
-
-  ]
+  
 }

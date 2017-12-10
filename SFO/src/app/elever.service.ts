@@ -6,6 +6,7 @@ export class EleverService {
   elever: Elev;
   elev:Elev;
   body: Elev;
+  att:Attendens
 
   attendens: any[];
   constructor(private http: HttpClient) { }
@@ -21,7 +22,7 @@ export class EleverService {
   }
 
  visEn(id:number){
-    this.http.get<Elev>("http://localhost:3000/Elever/"+id).subscribe(data => {
+    this.http.get<Elev>("http://localhost:3000/Elever/${id}").subscribe(data => {
     
       this.elev=data;
      
@@ -78,9 +79,15 @@ export class EleverService {
   }
 
 
-  visAttendens() {
-    this.attendens = this.elever[0].attendens;
-    return this.attendens;
+  visAttendens(id:number) {
+     this.http.get<Attendens>('http://localhost:3000/Oppmote?ElevId=${id}').subscribe(data => {
+      //"http://localhost:3000/Oppmote?ElevId="+1
+        this.att=data;
+        console.log("Dette er loggen fra elev service index 0 i oppmøte "+this.att)
+          });
+        
+          return this.att;
+        
   }
 
 
@@ -94,13 +101,16 @@ interface Elev {
   info: string,
   trinn: number,
   klasse: string,
-  attendens: [{
-    dato: Date,
-    sjekkinn: DateTimeFormat,
-    sjekkUt: DateTimeFormat
-
-  }
-
-  ]
+  
 }
 
+interface Attendens{
+  
+     dato:Date;
+     sjekkInn:Date,
+     sjekkUt:Date
+ 
+   
+ }
+
+// finne oppmøte ved elevid: http://localhost:3000/Oppmote?ElevId=2

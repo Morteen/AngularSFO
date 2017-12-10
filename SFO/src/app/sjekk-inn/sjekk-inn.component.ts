@@ -47,15 +47,8 @@ interface Elev{
   tlf:string,
   info:string,
   trinn:number,
-  klasse:string,
-  attendens:[{
-    dato:Date,
-    sjekkinn:DateTimeFormat,
-    sjekkUt:DateTimeFormat
-
-  }
-
-  ]
+  klasse:string
+  
 }
 interface Att{
  
