@@ -21,7 +21,7 @@ export class OppmoteComponent implements OnInit, OnDestroy {
   navn: string;
   id: number;
   private sub: any;
-  attendens:Attendens;
+  attendens$: Observable<IAttendens[]>;
 
 
   URL: string;
@@ -33,7 +33,7 @@ export class OppmoteComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
 
-this.attendens=this.attServ.visOppmote(this.id)
+this.attendens$=this.attServ.getAllAt(this.id);
     });
 
 

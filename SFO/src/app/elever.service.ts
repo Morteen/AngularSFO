@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {IAttendens }from './MyInterface/IAttendens';
 import { Elev } from './MyInterface/Elev';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { elev } from './MyClasses/elev';
+import { ElevState } from './MyClasses/ElevStat';
 const getAlleURL:string="http://localhost:3000/Elever";
 
 @Injectable()
@@ -12,6 +14,8 @@ export class EleverService {
   body: Elev;
   att:IAttendens
   temp:string;
+  ElevListe : elev []= [];
+  private elevSubject = new Subject<ElevState>();
 
   attendens: any[];
   private navn= new BehaviorSubject<string>('Hei');
@@ -73,6 +77,16 @@ export class EleverService {
 
 
   };
+
+
+  addProduct(_elev:any) {
+    console.log('in service');
+    this.ElevListe.push(_elev)
+    this.elevSubject.next(<ElevState>{loaded: true, elever: this.ElevListe});
+  }
+
+
+
   oppdater(id:number,fname:string,ename:string,trinn:number,klasse:string,tlf:string,info:string){
 
     const body={
