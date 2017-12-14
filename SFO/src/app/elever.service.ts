@@ -1,33 +1,52 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {IAttendens }from './MyInterface/IAttendens';
+import { Elev } from './MyInterface/Elev';
+import { BehaviorSubject } from 'rxjs';
+const getAlleURL:string="http://localhost:3000/Elever";
 
 @Injectable()
 export class EleverService {
   elever: Elev;
   elev:Elev;
   body: Elev;
-  att:Attendens
+  att:IAttendens
+  temp:string;
 
   attendens: any[];
+  private navn= new BehaviorSubject<string>('Hei');
+  cast=this.navn.asObservable();
+
   constructor(private http: HttpClient) { }
 
+  editStudent(newNavn){
+    this.navn.next(newNavn)
+   
+  }
+  
+ 
+  
+ 
+
+
   visAlleElever() {
-    //../assets/json/elever.json
-    this.http.get<Elev>("http://localhost:3000/Elever").subscribe(data => {
+    
+    this.http.get<Elev>(getAlleURL).subscribe(data => {
       // Read the result field from the JSON response.
       this.elever = data;
-      console.log("Dette er konsol.log av elever" + this.elever)
+      
     });
     return this.elever;
   }
 
  visEn(id:number){
-    this.http.get<Elev>("http://localhost:3000/Elever/${id}").subscribe(data => {
+   
+    this.http.get<Elev>("http://localhost:3000/Elever/"+id).subscribe(data => {
     
-      this.elev=data;
+      this.temp=data.fname+" "+data.ename;
      
         });
-       return this.elev;
+       return this.temp;
       }
 
   postEnElev(fname: string, ename: string, tlf: string, info: string, trinn: number, klasse: string) {
@@ -80,7 +99,7 @@ export class EleverService {
 
 
   visAttendens(id:number) {
-     this.http.get<Attendens>('http://localhost:3000/Oppmote?ElevId=${id}').subscribe(data => {
+     this.http.get<IAttendens>('http://localhost:3000/Oppmote?ElevId=${id}').subscribe(data => {
       //"http://localhost:3000/Oppmote?ElevId="+1
         this.att=data;
         console.log("Dette er loggen fra elev service index 0 i oppmøte "+this.att)
@@ -94,23 +113,8 @@ export class EleverService {
 }
 
 
-interface Elev {
-  fname: string,
-  ename: string,
-  tlf: string,
-  info: string,
-  trinn: number,
-  klasse: string,
-  
-}
 
-interface Attendens{
-  
-     dato:Date;
-     sjekkInn:Date,
-     sjekkUt:Date
- 
-   
- }
+
+
 
 // finne oppmøte ved elevid: http://localhost:3000/Oppmote?ElevId=2

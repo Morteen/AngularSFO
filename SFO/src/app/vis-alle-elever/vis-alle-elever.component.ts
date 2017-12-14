@@ -6,6 +6,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { MyDialogComponent } from '../my-dialog/my-dialog.component';
 import { Location } from '@angular/common';
 import { InfoDialogComponent } from '../Modaler/Info-dialog/Info-dialog.component';
+import { elev } from '../MyClasses/elev';
+import { AppComponent } from '../app.component';
 
 
 
@@ -18,6 +20,8 @@ import { InfoDialogComponent } from '../Modaler/Info-dialog/Info-dialog.componen
 export class VisAlleEleverComponent implements OnInit {
   elever:Elev;
   res:Elev;
+  navn:string
+
   
  dialogResult="";
 
@@ -31,7 +35,8 @@ export class VisAlleEleverComponent implements OnInit {
 
   ngOnInit() {
     this.elever=this.elevService.visAlleElever();
-     
+    this.elevService.cast.subscribe(navn=>this.navn=navn);
+    
     }
 
     openInfoDialog(id:number){
@@ -70,8 +75,11 @@ openDialog(id:number){
   })
   
 }
-refresh(){
-  this.elever=this.elevService.visAlleElever();
+test(fname:string,ename:string){
+
+  console.log("Knappen virker og id' n er:"+ fname+" "+ename)
+  this.elevService.editStudent(fname+" "+ename);
+  
 }
     visAlle(){
       return this.elever;
@@ -83,7 +91,10 @@ refresh(){
     }
   
     
-
+    editTheStudent(){
+      this.elevService.editStudent(this.elevService.visEn(2));
+      console.log("Edit knappen virker...")
+    }
   
 
   

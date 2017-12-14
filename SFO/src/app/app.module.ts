@@ -21,6 +21,9 @@ import { OppmoteComponent } from './oppmote/oppmote.component';
 import { ChangeDetectorRef } from '@angular/core';
 import { MyDialogComponent } from './my-dialog/my-dialog.component';
 import { InfoDialogComponent } from './Modaler/Info-dialog/Info-dialog.component';
+import { AttendensService } from './MyServices/attendens.service';
+import { MessageService } from './MyServices/message.service';
+import { StudentService } from './MyServices/student.service';
 
 
 
@@ -68,7 +71,12 @@ import { InfoDialogComponent } from './Modaler/Info-dialog/Info-dialog.component
   ],
   entryComponents:[MyDialogComponent,InfoDialogComponent],
   
-  providers: [EleverService],
+  providers: [
+    EleverService,
+    AttendensService,
+    MessageService,
+    StudentService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
