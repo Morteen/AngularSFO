@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 import { InfoDialogComponent } from '../Modaler/Info-dialog/Info-dialog.component';
 import { elev } from '../MyClasses/elev';
 import { AppComponent } from '../app.component';
+import { Observable } from 'rxjs/Observable';
 
 
 
@@ -25,7 +26,7 @@ export class VisAlleEleverComponent implements OnInit {
   
  dialogResult="";
 
-
+ elever$: Observable<Elev[]>;
 
   constructor(private elevService:EleverService,public dialog:MatDialog,public dialog2:MatDialog){}
     
@@ -34,7 +35,8 @@ export class VisAlleEleverComponent implements OnInit {
    
 
   ngOnInit() {
-    this.elever=this.elevService.visAlleElever();
+    //this.elever=this.elevService.visAlleElever();
+    this.elever$=this.elevService.getAllElever();
     this.elevService.cast.subscribe(navn=>this.navn=navn);
     
     }

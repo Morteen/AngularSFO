@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import {IAttendens }from './MyInterface/IAttendens';
 import { Elev } from './MyInterface/Elev';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { elev } from './MyClasses/elev';
 import { ElevState } from './MyClasses/ElevStat';
+import { Observable } from 'rxjs/Observable';
+import * as _ from 'lodash';
 const getAlleURL:string="http://localhost:3000/Elever";
+const params = new HttpParams()
+.set('orderBy', '"$key"')
+.set('limitToFirst', "1");
 
 @Injectable()
 export class EleverService {
@@ -15,6 +20,8 @@ export class EleverService {
   att:IAttendens
   temp:string;
   ElevListe : elev []= [];
+  URL:string="http://localhost:3000/Elever";
+  elever$: Observable<Elev[]>;
   private elevSubject = new Subject<ElevState>();
 
   attendens: any[];
@@ -42,6 +49,15 @@ export class EleverService {
     });
     return this.elever;
   }
+
+  getAllElever(){ 
+    return this.elever$ = this.http
+    .get(this.URL, {params})
+    .do(console.log)
+    .map(data => _.values(data))
+    }
+    
+
 
  visEn(id:number){
    
