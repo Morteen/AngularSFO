@@ -14,7 +14,7 @@ import{Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 const params = new HttpParams()
-.set('orderBy', '"$key"')
+.set('?ElevId=', '"$id"')
 .set('limitToFirst', "1");
 
 @Injectable()
