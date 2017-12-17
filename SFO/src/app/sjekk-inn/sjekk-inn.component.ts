@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { VisAlleEleverComponent } from '../vis-alle-elever/vis-alle-elever.component';
 import { EleverService } from '../elever.service';
 import { getLocaleDateTimeFormat } from '@angular/common';
+import { Observable } from 'rxjs/Observable';
+import { Elev } from '../MyInterface/Elev';
+import { Attendens } from '../MyClasses/attendens';
+import { IAttendens } from '../MyInterface/IAttendens';
 
 
 
@@ -11,50 +15,88 @@ import { getLocaleDateTimeFormat } from '@angular/common';
   styleUrls: ['./sjekk-inn.component.css']
 })
 export class SjekkInnComponent implements OnInit {
- liste:Elev;
- Oppmote:Att;
+
+  elever$: Observable<Elev[]>;
+totantall:number
+antSjekketInn:number=0;
+ elev:Elev;
+ Oppmote:IAttendens;
  regKnptekst="Sjekk inn"
-time:any;
-dato:any;
+
+elever:Elev[];
+
   constructor(private elevService:EleverService) { }
 
   ngOnInit() {
-this.liste=this.elevService.visAlleElever();
-console.log("Dette er loggen fra sjekk-inn comp:"+this.liste);
+    
+      this.elever$=this.elevService.getAllElever();
+      if(this.elever$!=null){
+      
+      this.elever$.subscribe(
+        resultArray => this.elever = resultArray,
+      
+        error => console.log("Error :: " + error)
+       
+       
+      );
+      this.elever$.subscribe(
+        ant => this.totantall = ant.length,
+      );
+      
+    }
+
+
 
   }
 
 reg(id:number){
  
-  this.dato=new Date().toLocaleString('en-NO');
-  this.time= this.dato;
-  console.log("Dette er reg knappen i sjekk-inn comp "+ id+" Dato:"+this.dato)
   
 }
-  inn(id:number,dato:Date,sjekkIn:DateTimeFormat){
-    this.Oppmote.dato=dato;
-    this.Oppmote.sjekkinn=sjekkIn;
-   
-    this.liste[id].attendens.push(this.Oppmote);
+  inn(id:number){
+this.elev=this.elever.find(elev => elev.id==id);
+this.elev.SjekkInn=true;
+console.log("Virker"+ id+" "+this.elev.fname+" "+this.elev.SjekkInn)
+
+////this.Oppmote.Dato= new Date().toLocaleString('en-NO');
+//this.Oppmote.SjekkInn=new Date().toLocaleString('en-NO');
+
+//this.liste[id].attendens.push(this.Oppmote);
+this.antSjekketInn++
+return this.elev.SjekkInn;
+
+    
 
   }
-  
+  ut(id:number){
+    this.elev=this.elever.find(elev => elev.id==id);
+    this.elev.SjekkInn=false;
+    console.log("Virker"+ id+" "+this.elev.fname+" "+this.elev.SjekkInn)
+    
+    ////this.Oppmote.Dato= new Date().toLocaleString('en-NO');
+    //this.Oppmote.SjekkInn=new Date().toLocaleString('en-NO');
+    
+    //this.liste[id].attendens.push(this.Oppmote);
+    
+    return this.elev.SjekkInn;
+    
+        
+    
+      }
+
+
+
+      cssVelger(test:boolean){
+        if(test){
+          return 'btn btn-primary'
+        }else{
+          return 'btn btn-danger'
+        }
+
+        
+
+      }
+      
 
 }
-interface Elev{
-  fname:string,
-  ename:string,
-  tlf:string,
-  info:string,
-  trinn:number,
-  klasse:string
-  
-}
-interface Att{
- 
-    dato:Date;
-    sjekkinn:DateTimeFormat,
-    sjekkUt:DateTimeFormat
 
-  
-}

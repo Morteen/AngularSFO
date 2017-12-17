@@ -1,4 +1,4 @@
-
+<div *ngIf=" elever$| async as elev else noDat">
  <h4 mat-dialog-title>Endre opplysningene om:<br> {{elev[data].fname}} {{elev[data].ename}}</h4>
  <div mat-dialog-content>
    
@@ -37,18 +37,7 @@
           
         </p>
       
-        <!--<table class="example-full-width" cellspacing="0"><tr>
-          <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="City">
-          </mat-form-field></td>
-          <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="State">
-          </mat-form-field></td>
-          <td><mat-form-field class="example-full-width">
-            <input matInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
-            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-          </mat-form-field></td>
-        </tr></table>-->
+       
       </form>
 
 
@@ -58,8 +47,11 @@
 
 
  </div>
+ 
  <div mat-dialog-actions>
    <button mat-button (click)="onCloseConfirm(data,fname.value,ename.value,trinn.value,klasse.value,tlf.value,info.value)">Confirm</button>
    <button mat-button (click)="onCloseCancle()">Cancle</button>
  </div>
+ <ng-template #noData>Finner ikke aktuelle data</ng-template>
+</div>
  

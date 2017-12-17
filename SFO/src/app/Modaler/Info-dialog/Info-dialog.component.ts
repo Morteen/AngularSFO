@@ -2,6 +2,8 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { inject } from '@angular/core/testing';
 import { EleverService } from '../../elever.service';
+import { Elev } from '../../MyInterface/Elev';
+import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-Info-dialog',
   templateUrl: './Info-dialog.component.html',
@@ -10,6 +12,7 @@ import { EleverService } from '../../elever.service';
 export class InfoDialogComponent implements OnInit {
 elev:Elev;
 test:Elev;
+elever$: Observable<Elev[]>;
   constructor(private elevService:EleverService, public dialogRef:MatDialogRef<InfoDialogComponent>,@Inject(MAT_DIALOG_DATA)public data:number ){ }
 
 
@@ -25,16 +28,8 @@ this.dialogRef.close("Bekreft");
   }
 
   ngOnInit() {
-    this.elev=this.elevService.visAlleElever();
+    this.elever$=this.elevService.getAllElever();
   }
 
 }
-interface Elev{
-  fname:string,
-  ename:string,
-  tlf:string,
-  info:string,
-  trinn:number,
-  klasse:string,
-  
-}
+

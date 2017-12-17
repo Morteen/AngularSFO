@@ -11,44 +11,27 @@ import { elev } from './MyClasses/elev';
 })
 export class AppComponent {
 
-  constructor(private Http : HttpClient) {
+  constructor() {
     
     
-        this.URL ="http://localhost:3000/Elever";
+      
     }
-    elev : elev[]=[];
-    URL : string;
-    tall:number
+   
     
     
     ngOnInit() {
     
     
-        this.Http.get(this.URL)
-            .map((response : Response) => response.json())
-            .subscribe((result:any) => {
-                this.elev = result;
-               
-            });
     }
-skaffListe(){
-  return this.elev;
-}
 
 
 
- /* elever:Elev;
-  test:any[];
-  constructor(private elevService:EleverService){}
-  ngOnInit(){
+
+
     
    
    
    
-  }
-  skaffElevliste(liste:Elev){
-    
-   
-  }*/
+  
 }
 

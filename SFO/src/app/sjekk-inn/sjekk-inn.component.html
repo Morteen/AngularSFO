@@ -3,7 +3,12 @@
     Navn: {{elev.fname}} {{elev.ename}} klasse: {{elev.trinn}}{{elev.klasse}} <button (click)="reg(elev.id)">{{regKnptekst}}</button>
   </li>
   </ul>-->
+ 
   <div id="table-container">
+      <div id="info">
+          Totalt antall elever: {{totantall}}<br>
+          Antall innsjekket elever er: {{antSjekketInn}}
+            </div>
       <table class="table table-hover">
           <thead>
             <tr>
@@ -11,27 +16,41 @@
               <th scope="col">Navn</th>
               
               <th scope="col">Klasse</th>
-              <th scope="col">Kontakt telefon</th>
+              <th scope="col">Sjekket inn</th>
+              <th scope="col">Sjekket Ut</th>
+              
              <th>
       
              </th>
              <th></th>
              
             </tr>
+            <div *ngIf="test"><span>Laster....</span></div>
           </thead>
-          <tbody *ngFor="let elev of liste">
-            <tr>
+          <tbody ><!--*ngIf=" elever$| async as elever else noDat"-->
+            <tr *ngFor="let elev of elever">
               <th scope="row">{{elev.id}}</th>
              
               <td>{{elev.fname}} {{elev.ename}}</td>
               
               <td>{{elev.trinn}}{{elev.klasse}}</td>
-              <td>{{elev.tlf}}</td>
+              
              
-              <td><button type="button" class="btn btn-danger"(click)="reg(elev.id)"> {{regKnptekst}} </button>  </td>
-             
+              <td >
+                <button  type="button" [ngClass]="cssVelger(elev.SjekkInn)"  (click)="inn(elev.id)"> {{regKnptekst}} </button> 
+               
+               </td>
+               <td>
+                                 <button  type="button" [ngClass]="cssVelger(elev.SjekkUt)" (click)="ut(elev.id)"> Sjekk ut </button>
+                                 
+               </td>
+
+              <td *ngIf="elev.SjekkInn">              
+                  <img src="../../assets/images/green.jpg"width="30" height="30">
+               </td>
+              
             </tr>
-            
+           <!-- <ng-template #noData>Finner ikke aktuelle data</ng-template>-->
           </tbody>
         </table>
       </div>

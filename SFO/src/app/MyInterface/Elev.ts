@@ -5,5 +5,8 @@ export interface Elev {
   info: string,
   trinn: number,
   klasse: string,
+  SjekkInn:boolean;
+  SjekkUt:boolean;
+  id:number
 
 }
