@@ -6,10 +6,10 @@ import { Elev } from '../MyInterface/Elev';
 export class DataService {
 elev:Elev
   private messageElev = new BehaviorSubject<Elev>(this.elev);
-  currentMessage = this.messageElev.asObservable();
+  currentElev = this.messageElev.asObservable();
   constructor() { }
 
-  
+
   changeElev(_elev: Elev) {
     this.messageElev.next(_elev)
   }

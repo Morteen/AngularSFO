@@ -14,16 +14,8 @@ export class RegElevComponent implements OnInit {
     constructor(private elevService:EleverService) { }
   
     ngOnInit() {
-      this.elev={
-      fname:'Morten',
-      ename:'Olsen',
-      trinn:4,
-      klasse:'B',
-      kontaktTlf:40042106,
-      info:'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.'
-  
-    }
-    this.elever=[this.elev];
+      
+    
     }
   addElev(fname,ename,trinn,klasse,konTlf,info){
     console.log(fname+""+ename+""+trinn+""+klasse+""+konTlf+""+info);

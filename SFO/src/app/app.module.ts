@@ -24,6 +24,7 @@ import { InfoDialogComponent } from './Modaler/Info-dialog/Info-dialog.component
 import { AttendensService } from './MyServices/attendens.service';
 import { MessageService } from './MyServices/message.service';
 import { StudentService } from './MyServices/student.service';
+import { DataService } from './MyServices/data.service';
 
 
 
@@ -75,7 +76,8 @@ import { StudentService } from './MyServices/student.service';
     EleverService,
     AttendensService,
     MessageService,
-    StudentService
+    StudentService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })

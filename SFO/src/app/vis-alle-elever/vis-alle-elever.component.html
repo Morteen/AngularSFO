@@ -21,7 +21,7 @@
        
       </tr>
     </thead>
-    <tbody *ngIf=" elever$| async as elever else noDat">
+    <tbody >
       <tr *ngFor="let elev of elever">
         <th scope="row">{{elev.id}}</th>
        
@@ -33,7 +33,7 @@
         <button mat-button color="accent" (click)="openDialog(elev.id)">Rediger elev </button>|
         <button mat-button color="accent" (click)="openInfoDialog(elev.id)">Vis info</button></td>
 
-        <ng-template #noData>Finner ikke aktuelle data</ng-template>
+       
        
       </tr>
       

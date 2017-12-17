@@ -4,6 +4,7 @@ import { inject } from '@angular/core/testing';
 import { EleverService } from '../elever.service';
 import { Observable } from 'rxjs/Observable';
 import { Elev } from '../MyInterface/Elev';
+import { DataService } from '../MyServices/data.service';
 @Component({
   selector: 'app-my-dialog',
   templateUrl: './my-dialog.component.html',
@@ -14,7 +15,8 @@ elev:Elev;
 
 elever$: Observable<Elev[]>;
 test:Elev[];
-  constructor(private elevService:EleverService, public dialogRef:MatDialogRef<MyDialogComponent>,@Inject(MAT_DIALOG_DATA)public data:number ){ }
+_elev:Elev
+  constructor(private elevService:EleverService,private dataservice:DataService, public dialogRef:MatDialogRef<MyDialogComponent>,@Inject(MAT_DIALOG_DATA)public data:number ){ }
 
 
   onCloseConfirm(id:number,fname:string,ename:string,trinn:number=0,klasse:string,tlf:string,info:string){
@@ -37,7 +39,17 @@ test:Elev[];
       tlf=this.test[id].tlf;
     }
     this.elevService.oppdater(id,fname,ename,trinn,klasse,tlf,info);
-    
+ this._elev=this.test.find(elev=>elev.id==id);
+    this._elev.fname=fname;
+    this._elev.ename=ename;
+    this._elev.id=id;
+    this._elev.klasse=klasse;
+    this._elev.trinn=trinn;
+    this._elev.tlf=tlf;
+    this._elev.info=info;
+
+    this.dataservice.changeElev(this._elev);
+    //currentElev.subscribe(elev=>this._elev=elev)
     
     var res={
       id:id,
@@ -48,8 +60,14 @@ test:Elev[];
       tlf:tlf,
       info:info
     }
+
+
+
 this.dialogRef.close(res);
   }
+
+
+
   onCloseCancle(){
     this.dialogRef.close('Cancle');
   }

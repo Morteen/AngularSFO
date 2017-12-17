@@ -29,6 +29,13 @@ this.dialogRef.close("Bekreft");
 
   ngOnInit() {
     this.elever$=this.elevService.getAllElever();
+    this.elever$.subscribe(
+     
+        resultArray => this.elev = resultArray[this.data],
+  
+        error => console.log("Error :: " + error)
+    )
+
   }
 
 }

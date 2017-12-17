@@ -8,8 +8,12 @@
     margin-bottom: 10px;
 }
 #main-header{
+    margin-top:15px;
     background-color:coral;
     color:#fff;
+    border-radius: 10px;
+    width: 99%;
+    margin: auto;
 
 }
 #navbar{
