@@ -33,21 +33,24 @@
              
               <td>{{elev.fname}} {{elev.ename}}</td>
               
-              <td>{{elev.trinn}}{{elev.klasse}}</td>
+              <td> <button  type="button" [ngClass]="cssVelger(elev.SjekkInn)"  (click)="inn(elev.id)"> {{regKnptekst}} </button> </td>
+              <td *ngIf="elev.SjekkInn">              
+                  <img src="../../assets/images/green.jpg"width="30" height="30">
+                  {{tid(elev.id)}}
+               </td>
               
              
-              <td >
-                <button  type="button" [ngClass]="cssVelger(elev.SjekkInn)"  (click)="inn(elev.id)"> {{regKnptekst}} </button> 
-               
-               </td>
+             
                <td>
                                  <button  type="button" [ngClass]="cssVelger(elev.SjekkUt)" (click)="ut(elev.id)"> Sjekk ut </button>
                                  
                </td>
-
-              <td *ngIf="elev.SjekkInn">              
+               <td *ngIf="elev.SjekkUt">              
                   <img src="../../assets/images/green.jpg"width="30" height="30">
+                  {{utTid(elev.id)}}
                </td>
+
+              
               
             </tr>
            <!-- <ng-template #noData>Finner ikke aktuelle data</ng-template>-->

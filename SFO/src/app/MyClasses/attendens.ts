@@ -1,9 +1,14 @@
 export class Attendens {
-    constructor(
-    id:number,
-   Dato: string,
-   SjekkInn: string,
-   SjekkUt: string,
-   elevId:number)
-{} 
+    
+    id:number
+   Dato: string
+   SjekkInn: string
+   SjekkUt: string
+   elevId:number
+
+constructor(elevId:number,SjekkInn: string)
+{
+    this.elevId=elevId;
+    this.SjekkInn=SjekkInn;
+} 
  }

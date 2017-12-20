@@ -17,86 +17,106 @@ import { IAttendens } from '../MyInterface/IAttendens';
 export class SjekkInnComponent implements OnInit {
 
   elever$: Observable<Elev[]>;
-totantall:number
-antSjekketInn:number=0;
- elev:Elev;
- Oppmote:IAttendens;
- regKnptekst="Sjekk inn"
+  totantall: number
+  antSjekketInn: number = 0;
+  antSjekketUt: number = 0;
+  elev: Elev;
+  OppmoteArray: Attendens[] = [];
 
-elever:Elev[];
+  _eoppmote: Attendens;
+  OppM: IAttendens;
+  private tidsPunktInn: string;
+  private tidspunktUt: string
+  private dato: string;
+  regKnptekst = "Sjekk inn"
 
-  constructor(private elevService:EleverService) { }
+  elever: Elev[];
+
+  constructor(private elevService: EleverService) { }
 
   ngOnInit() {
-    
-      this.elever$=this.elevService.getAllElever();
-      if(this.elever$!=null){
-      
+
+    this.elever$ = this.elevService.getAllElever();
+    if (this.elever$ != null) {
+
       this.elever$.subscribe(
         resultArray => this.elever = resultArray,
-      
+
         error => console.log("Error :: " + error)
-       
-       
+
+
       );
       this.elever$.subscribe(
         ant => this.totantall = ant.length,
       );
-      
+
     }
 
 
 
   }
 
-reg(id:number){
- 
-  
-}
-  inn(id:number){
-this.elev=this.elever.find(elev => elev.id==id);
-this.elev.SjekkInn=true;
-console.log("Virker"+ id+" "+this.elev.fname+" "+this.elev.SjekkInn)
+  reg(id: number) {
 
-////this.Oppmote.Dato= new Date().toLocaleString('en-NO');
-//this.Oppmote.SjekkInn=new Date().toLocaleString('en-NO');
-
-//this.liste[id].attendens.push(this.Oppmote);
-this.antSjekketInn++
-return this.elev.SjekkInn;
-
-    
 
   }
-  ut(id:number){
-    this.elev=this.elever.find(elev => elev.id==id);
-    this.elev.SjekkInn=false;
-    console.log("Virker"+ id+" "+this.elev.fname+" "+this.elev.SjekkInn)
-    
-    ////this.Oppmote.Dato= new Date().toLocaleString('en-NO');
-    //this.Oppmote.SjekkInn=new Date().toLocaleString('en-NO');
-    
-    //this.liste[id].attendens.push(this.Oppmote);
-    
-    return this.elev.SjekkInn;
-    
-        
-    
-      }
+  tid(id: number) {
+    this.OppM = this.OppmoteArray.find(opp => opp.elevId == id)
+    console.log("Dette er loggen av tid:" + this.OppM.elevId)
+    return this.OppM.SjekkInn;
+
+  }
+  utTid(id: number) {
+    this.OppM = this.OppmoteArray.find(opp => opp.elevId == id)
+    console.log("Dette er loggen av tid:" + this.OppM.elevId)
+    return this.OppM.SjekkUt;
+
+  }
+
+  inn(id: number) {
+    this.elev = this.elever.find(elev => elev.id == id);
+    this.elev.SjekkInn = true;
+    this.antSjekketInn++;
+    console.log("Virker" + id + " " + this.elev.fname + " " + this.elev.SjekkInn);
+
+    var tid = new Date().getHours().toLocaleString('en-NO') + ":" + new Date().getMinutes().toLocaleString('en-NO') + ":" + new Date().getSeconds().toLocaleString('en-NO');
+    this._eoppmote = new Attendens(id, tid);
+    console.log("Oppmøte:" + this._eoppmote.elevId + " Sjekk inn tid:" + this._eoppmote.SjekkInn);
+    this._eoppmote.Dato = new Date().getDay().toLocaleString('en-NO');
+    this.OppmoteArray.push(this._eoppmote);
 
 
 
-      cssVelger(test:boolean){
-        if(test){
-          return 'btn btn-primary'
-        }else{
-          return 'btn btn-danger'
-        }
 
-        
+  }
+  ut(id: number) {
+    this.elev = this.elever.find(elev => elev.id == id);
+    //this.elev.SjekkInn = false;
+    this.elev.SjekkUt=true;
+    this.OppmoteArray.find(opp => opp.elevId == id).SjekkUt = this.setTid();
 
-      }
-      
+    console.log("Virker" + id + " " + this.elev.fname + " " + this.elev.SjekkInn)
+    this.antSjekketUt++;
+
+  }
+
+
+
+  cssVelger(test: boolean) {
+    if (test) {
+      return 'btn btn-primary'
+    } else {
+      return 'btn btn-danger'
+    }
+
+
+
+  }
+
+  setTid() {
+    return new Date().getHours().toLocaleString('en-NO') + ":" + new Date().getMinutes().toLocaleString('en-NO') + ":" + new Date().getSeconds().toLocaleString('en-NO');
+  }
+
 
 }
 
