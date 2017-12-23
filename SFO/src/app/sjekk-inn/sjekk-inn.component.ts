@@ -40,7 +40,20 @@ export class SjekkInnComponent implements OnInit {
     if (this.elever$ != null) {
 
       this.elever$.subscribe(
-        resultArray => this.elever = resultArray,
+        resultArray => this.elever =resultArray.sort((a, b) => {
+          if(a.trinn==b.trinn){
+            let comparison = 0;
+            if (a.klasse > b.klasse) {
+              comparison = 1;
+            } else if (a.klasse < b.klasse) {
+              comparison = -1;
+            }
+            return comparison
+          }else{
+          return a.trinn - b.trinn
+          } 
+        }
+      ),
 
         error => console.log("Error :: " + error)
 

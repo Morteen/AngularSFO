@@ -11,6 +11,9 @@ import { AppComponent } from '../app.component';
 import { Observable } from 'rxjs/Observable';
 import { DataService } from '../MyServices/data.service';
 import { Elev } from '../MyInterface/Elev';
+import * as _ from "lodash";
+import { orderBy } from 'lodash';
+import { Pipe, PipeTransform }   from '@angular/core';
 
 
 
@@ -22,6 +25,7 @@ import { Elev } from '../MyInterface/Elev';
 })
 export class VisAlleEleverComponent implements OnInit {
   elever: Elev[];
+ 
   _elev: Elev;
   res: Elev;
   navn: string
@@ -39,16 +43,34 @@ export class VisAlleEleverComponent implements OnInit {
 
     this.elever$ = this.elevService.getAllElever();
     this.elever$.subscribe(
-      resultArray => this.elever = resultArray,
+      resultArray => this.elever= resultArray.sort((a, b) => {
+        if(a.trinn==b.trinn){
+          let comparison = 0;
+          if (a.klasse > b.klasse) {
+            comparison = 1;
+          } else if (a.klasse < b.klasse) {
+            comparison = -1;
+          }
+          return comparison
+        }else{
+        return a.trinn - b.trinn
+        } 
+      }
+    ),
+      
 
       error => console.log("Error :: " + error)
 
 
     );
-
-
+    
+    
+    
+    
+  
 
   }
+
 
   openInfoDialog(id: number) {
     console.log(id);
