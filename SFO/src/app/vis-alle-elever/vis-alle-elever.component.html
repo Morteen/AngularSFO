@@ -7,6 +7,12 @@
   <button mat-button color="accent" (click)="openDialog(elev.id)">Rediger elev </button>
   </li>
 </ul>-->
+<div id="pageList">
+<ul *ngFor="let trinn of antTrinn; let i of index" class="pagination"  >
+    <li><a href="#"(click)="setTrinn(trinn,$event)">{{trinn}}</a></li>
+
+  </ul>
+</div>
 <div id="table-container">
 <table class="table table-hover">
     <thead>

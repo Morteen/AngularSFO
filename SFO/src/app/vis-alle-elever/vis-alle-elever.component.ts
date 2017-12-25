@@ -25,7 +25,7 @@ import { Pipe, PipeTransform }   from '@angular/core';
 })
 export class VisAlleEleverComponent implements OnInit {
   elever: Elev[];
- 
+  antTrinn:number[]=[1,2,3,4]
   _elev: Elev;
   res: Elev;
   navn: string
@@ -68,6 +68,29 @@ export class VisAlleEleverComponent implements OnInit {
     
     
   
+
+  }
+  setTrinn(trinn:number,event:any){
+    event.preventDefault();
+    this.elever$=this.elevService.getTrinn(trinn);
+    this.elever$.subscribe(
+      resultArray => this.elever =resultArray.sort((a, b) => {
+        
+          let comparison = 0;
+          if (a.klasse > b.klasse) {
+            comparison = 1;
+          } else if (a.klasse < b.klasse) {
+            comparison = -1;
+          }
+          return comparison
+        
+      }
+    ),
+
+      error => console.log("Error :: " + error)
+
+
+    );
 
   }
 

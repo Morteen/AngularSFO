@@ -21,6 +21,7 @@ export class EleverService {
   temp:string;
   ElevListe : elev []= [];
   URL:string="http://localhost:3000/Elever";
+  getTrinnURL:string="http://localhost:3000/Elever?trinn="
   elever$: Observable<Elev[]>;
   private elevSubject = new Subject<ElevState>();
 
@@ -55,6 +56,15 @@ export class EleverService {
     .get(this.URL, {params})
     .do(console.log)
     .map(data => _.values(data))
+    }
+
+
+    //Vise bare elever på gitt trinn
+    getTrinn(trinn:number){
+      return this.elever$ = this.http
+      .get(this.getTrinnURL+trinn, {params})
+      .do(console.log)
+      .map(data => _.values(data))
     }
     
 

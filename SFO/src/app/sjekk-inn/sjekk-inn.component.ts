@@ -22,6 +22,8 @@ export class SjekkInnComponent implements OnInit {
   antSjekketUt: number = 0;
   elev: Elev;
   OppmoteArray: Attendens[] = [];
+  antTrinn:number[]=[1,2,3,4]
+  trinn:number=0;
 
   _eoppmote: Attendens;
   OppM: IAttendens;
@@ -33,8 +35,27 @@ export class SjekkInnComponent implements OnInit {
   elever: Elev[];
 
   constructor(private elevService: EleverService) { }
+  
+
+  
+  getTrinn(innTrinn:number,event:any){
+    event.preventDefault();
+    this.trinn=innTrinn
+    console.log("Dette er det valgte trinnet:"+this.trinn)
+  }
+  setTrinn(elev:Elev){
+    var sjekk =false;
+    if(this.trinn==elev.trinn){
+     sjekk=true;
+    }
+    console.log("Trinn:"+this.trinn+"Elev trinn:"+elev.trinn+"Sjekk:"+sjekk);
+       return sjekk;
+     
+
+  }
 
   ngOnInit() {
+   
 
     this.elever$ = this.elevService.getAllElever();
     if (this.elever$ != null) {

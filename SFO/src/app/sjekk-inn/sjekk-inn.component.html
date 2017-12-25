@@ -9,10 +9,14 @@
           Totalt antall elever: {{totantall}}<br>
           Antall innsjekket elever er: {{antSjekketInn}}
             </div>
+            <ul *ngFor="let trinn of antTrinn; let i of index" class="pagination" >
+              <li><a href="#"(click)="getTrinn(trinn,$event)" >{{trinn}}</a></li>
+
+            </ul>
       <table class="table table-hover">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">Trinn</th>
               <th scope="col">Navn</th>
               
               <th scope="col">Klasse</th>
@@ -27,12 +31,12 @@
             </tr>
             <div *ngIf="test"><span>Laster....</span></div>
           </thead>
-          <tbody ><!--*ngIf=" elever$| async as elever else noDat"-->
-            <tr *ngFor="let elev of elever">
-              <th scope="row">{{elev.id}}</th>
-             
+          <tbody *ngFor="let elev of elever">
+            <tr *ngIf="setTrinn(elev)">
+              <th scope="row">{{elev.trinn}}</th>
+            
               <td>{{elev.fname}} {{elev.ename}}</td>
-              
+              <td>{{elev.klasse}}</td>
               <td> <button  type="button" [ngClass]="cssVelger(elev.SjekkInn)"  (click)="inn(elev.id)"> {{regKnptekst}} </button> </td>
               <td *ngIf="elev.SjekkInn">              
                   <img src="../../assets/images/green.jpg"width="30" height="30">
