@@ -29,7 +29,7 @@ export class VisAlleEleverComponent implements OnInit {
   _elev: Elev;
   res: Elev;
   navn: string
-
+  trinn:number=0;
   dialogResult = "";
   elever$: Observable<Elev[]>;
 
@@ -70,30 +70,7 @@ export class VisAlleEleverComponent implements OnInit {
   
 
   }
-  setTrinn(trinn:number,event:any){
-    event.preventDefault();
-    this.elever$=this.elevService.getTrinn(trinn);
-    this.elever$.subscribe(
-      resultArray => this.elever =resultArray.sort((a, b) => {
-        
-          let comparison = 0;
-          if (a.klasse > b.klasse) {
-            comparison = 1;
-          } else if (a.klasse < b.klasse) {
-            comparison = -1;
-          }
-          return comparison
-        
-      }
-    ),
-
-      error => console.log("Error :: " + error)
-
-
-    );
-
-  }
-
+ 
 
   openInfoDialog(id: number) {
     console.log(id);
@@ -152,12 +129,26 @@ export class VisAlleEleverComponent implements OnInit {
   }
 
 
-  editTheStudent() {
-    this.elevService.editStudent(this.elevService.visEn(2));
-    console.log("Edit knappen virker...")
+ 
+
+  getTrinn(innTrinn:number,event:any){
+    event.preventDefault();
+    this.trinn=innTrinn
+    console.log("Dette er det valgte trinnet:"+this.trinn)
   }
+  setTrinn(elev:Elev){
+    var sjekk =false;
+    if(this.trinn==0){
+      sjekk=true;
+    }
+    else if(this.trinn==elev.trinn){
+     sjekk=true;
+    }
+    console.log("Trinn:"+this.trinn+"Elev trinn:"+elev.trinn+"Sjekk:"+sjekk);
+       return sjekk;
+     
 
-
+  }
 
 
 

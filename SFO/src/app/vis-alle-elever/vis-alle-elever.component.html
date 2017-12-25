@@ -9,7 +9,7 @@
 </ul>-->
 <div id="pageList">
 <ul *ngFor="let trinn of antTrinn; let i of index" class="pagination"  >
-    <li><a href="#"(click)="setTrinn(trinn,$event)">{{trinn}}</a></li>
+    <li><a href="#"(click)="getTrinn(trinn,$event)">{{trinn}}</a></li>
 
   </ul>
 </div>
@@ -27,8 +27,8 @@
        
       </tr>
     </thead>
-    <tbody >
-      <tr *ngFor="let elev of elever" >
+    <tbody *ngFor="let elev of elever" >
+      <tr *ngIf="setTrinn(elev)">
         
 
         <th scope="row">{{elev.id}}</th>
