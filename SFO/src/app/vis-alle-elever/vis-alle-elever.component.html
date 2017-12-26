@@ -8,16 +8,28 @@
   </li>
 </ul>-->
 <div id="pageList">
-<ul *ngFor="let trinn of antTrinn; let i of index" class="pagination"  >
+    <ul class="pagination">
+        <li>
+            <a (click)=subOne()><span class="glyphicon glyphicon-chevron-left" aria-hidden="true" ></span></a>
+        </li>
+    </ul>
+<ul *ngFor="let trinn of antTrinn; let i of index" class="pagination" >
     <li><a href="#"(click)="getTrinn(trinn,$event)">{{trinn}}</a></li>
-
+  
+  </ul >
+ 
+  <ul class="pagination">
+      <li>
+          <a (click)=addOne()><span class="glyphicon glyphicon-chevron-right" aria-hidden="true" ></span></a>
+      </li>
   </ul>
+ 
 </div>
 <div id="table-container">
 <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">Trinn</th>
         <th scope="col">Fornavn</th>
         <th scope="col">Etternavn</th>
         <th scope="col">Klasse</th>
@@ -31,11 +43,11 @@
       <tr *ngIf="setTrinn(elev)">
         
 
-        <th scope="row">{{elev.id}}</th>
+        <th scope="row">{{elev.trinn}}</th>
        
         <td>{{elev.fname}}</td>
         <td>{{elev.ename}}</td>
-        <td>{{elev.trinn}}{{elev.klasse}}</td>
+        <td>{{elev.klasse}}</td>
         <td>{{elev.tlf}}</td>
         <td> <a [routerLink]="['/oppmote', elev.id]" routerLinkActive="active"> <button (click)="test(elev.fname,elev.ename)" type="button" class="btn btn-link">Vis oppmøte </button></a>|
         <button mat-button color="accent" (click)="openDialog(elev.id)">Rediger elev </button>|

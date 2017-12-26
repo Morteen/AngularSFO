@@ -13,8 +13,8 @@ import { DataService } from '../MyServices/data.service';
 import { Elev } from '../MyInterface/Elev';
 import * as _ from "lodash";
 import { orderBy } from 'lodash';
-import { Pipe, PipeTransform }   from '@angular/core';
-
+import { Pipe, PipeTransform } from '@angular/core';
+const MAXTRINN = 4;
 
 
 
@@ -24,12 +24,13 @@ import { Pipe, PipeTransform }   from '@angular/core';
   styleUrls: ['./vis-alle-elever.component.css']
 })
 export class VisAlleEleverComponent implements OnInit {
-  elever: Elev[];
-  antTrinn:number[]=[1,2,3,4]
+  elever: Elev[] = [];
+  sortertElever: Elev[] = [];
+  antTrinn: number[] = [1, 2, 3, 4]
   _elev: Elev;
   res: Elev;
   navn: string
-  trinn:number=0;
+  trinn: number = 0;
   dialogResult = "";
   elever$: Observable<Elev[]>;
 
@@ -43,8 +44,26 @@ export class VisAlleEleverComponent implements OnInit {
 
     this.elever$ = this.elevService.getAllElever();
     this.elever$.subscribe(
-      resultArray => this.elever= resultArray.sort((a, b) => {
-        if(a.trinn==b.trinn){
+      resultArray => this.elever = resultArray,
+
+
+      error => console.log("Error :: " + error)
+
+
+    );
+
+
+
+
+
+
+
+  }
+
+  sortTabell() {
+    if (this.trinn == 0) {
+      this.elever.sort((a, b) => {
+        if (a.trinn == b.trinn) {
           let comparison = 0;
           if (a.klasse > b.klasse) {
             comparison = 1;
@@ -52,25 +71,15 @@ export class VisAlleEleverComponent implements OnInit {
             comparison = -1;
           }
           return comparison
-        }else{
-        return a.trinn - b.trinn
-        } 
+        } else {
+          return a.trinn - b.trinn
+        }
       }
-    ),
-      
-
-      error => console.log("Error :: " + error)
+      )
 
 
-    );
-    
-    
-    
-    
-  
-
+    }
   }
- 
 
   openInfoDialog(id: number) {
     console.log(id);
@@ -129,25 +138,42 @@ export class VisAlleEleverComponent implements OnInit {
   }
 
 
- 
 
-  getTrinn(innTrinn:number,event:any){
+
+  getTrinn(innTrinn: number, event: any) {
     event.preventDefault();
-    this.trinn=innTrinn
-    console.log("Dette er det valgte trinnet:"+this.trinn)
-  }
-  setTrinn(elev:Elev){
-    var sjekk =false;
-    if(this.trinn==0){
-      sjekk=true;
-    }
-    else if(this.trinn==elev.trinn){
-     sjekk=true;
-    }
-    console.log("Trinn:"+this.trinn+"Elev trinn:"+elev.trinn+"Sjekk:"+sjekk);
-       return sjekk;
-     
+    this.trinn = innTrinn
 
+  }
+  setTrinn(elev: Elev) {
+    var sjekk = false;
+    if (this.trinn == 0) {
+      sjekk = true;
+    }
+    else if (this.trinn == elev.trinn) {
+      sjekk = true;
+    }
+
+    return sjekk;
+
+
+  }
+  addOne() {
+    if (this.trinn == MAXTRINN) {
+      this.trinn = MAXTRINN;
+    }
+    else {
+      this.trinn++;
+    }
+   
+  }
+  subOne() {
+    if (this.trinn == 0) {
+      this.trinn = 0;
+    } else {
+      this.trinn--;
+    }
+    
   }
 
 

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Elev } from '../MyInterface/Elev';
 import { Attendens } from '../MyClasses/attendens';
 import { IAttendens } from '../MyInterface/IAttendens';
-
+const MAXTRINN=4;
 
 
 @Component({
@@ -30,6 +30,7 @@ export class SjekkInnComponent implements OnInit {
   private tidsPunktInn: string;
   private tidspunktUt: string
   private dato: string;
+ 
   regKnptekst = "Sjekk inn"
 
   elever: Elev[];
@@ -45,7 +46,10 @@ export class SjekkInnComponent implements OnInit {
   }
   setTrinn(elev:Elev){
     var sjekk =false;
-    if(this.trinn==elev.trinn){
+    if (this.trinn == 0) {
+      sjekk = true;
+    }
+    else if(this.trinn==elev.trinn){
      sjekk=true;
     }
     console.log("Trinn:"+this.trinn+"Elev trinn:"+elev.trinn+"Sjekk:"+sjekk);
@@ -152,5 +156,29 @@ export class SjekkInnComponent implements OnInit {
   }
 
 
-}
+
+  addOne(){
+    if (this.trinn == MAXTRINN) {
+      this.trinn = MAXTRINN;
+    }
+    else {
+      this.trinn++;
+    }
+   
+  }
+  subOne() {
+    if (this.trinn == 0) {
+      this.trinn = 0;
+    } else {
+      this.trinn--;
+    }
+    
+  }
+
+
+
+
+}//Slutt på klassen
+
+
 

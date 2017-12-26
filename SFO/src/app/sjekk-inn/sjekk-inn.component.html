@@ -9,9 +9,19 @@
           Totalt antall elever: {{totantall}}<br>
           Antall innsjekket elever er: {{antSjekketInn}}
             </div>
+            <ul class="pagination">
+                <li>
+                    <a (click)=subOne()><span class="glyphicon glyphicon-chevron-left" aria-hidden="true" ></span></a>
+                </li>
+            </ul>
             <ul *ngFor="let trinn of antTrinn; let i of index" class="pagination" >
               <li><a href="#"(click)="getTrinn(trinn,$event)" >{{trinn}}</a></li>
 
+            </ul>
+            <ul class="pagination">
+                <li>
+                    <a (click)=addOne()><span class="glyphicon glyphicon-chevron-right" aria-hidden="true" ></span></a>
+                </li>
             </ul>
       <table class="table table-hover">
           <thead>
