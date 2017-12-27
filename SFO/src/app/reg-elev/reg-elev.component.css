@@ -1,9 +1,14 @@
 #container{
     width:95%;
+    height: 71vh;
     margin:auto;
+    margin-bottom: 10px;
 }
 
 .form-control{
     margin-top: 5px;
     margin-bottom: 5px;
+}
+.myformStyle{
+    margin:3px
 }

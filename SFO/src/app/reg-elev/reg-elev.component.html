@@ -1,23 +1,25 @@
 <div id="container"> 
 <form id="myForm">
   
-     <div class="form-group">
-  <input type="text"placeholder="Fornavn" class="form-control"#fname/>
-  <input  class="form-control"placeholder="Etternavn" type="text"#ename>
- 
- 
+     <div class="form-inline">
+  <input type="text"placeholder="Fornavn" class="form-control myformStyle"#fname/>
+  <input  class="form-control myformStyle"placeholder="Etternavn" type="text"#ename>
+</div>
+<div class="form-inline">
   
-  <input  class="form-control"placeholder="Trinn"type="number"#trinn>
-  <input  class="form-control"placeholder="Klasse"type="text"#klasse>
+  <input  class="form-control myformStyle"placeholder="Trinn"type="number"#trinn>
+  <input  class="form-control myformStyle"placeholder="Klasse"type="text"#klasse>
  
  
  
-  <input  class="form-control"placeholder="Telefon"type="number"#konTlf>
+  <input  class="form-control myformStyle"placeholder="Telefon"type="number"#konTlf>
+</div>
+<div class="form-group">
    <textarea name="" id="" cols="30" rows="10"class="form-control"placeholder="Spesielle opplysninger"type="text"#info></textarea>
                   <!--fname,ename,trinn,klasse,kontaktTlf,info-->
                  </div>
- <button id="btn" class="btn btn-success" type="submit"(click)="addElev(fname.value,ename.value,trinn.value,klasse.value,konTlf.value,info.value)">Ny elev</button>
- <button id="btn" class="btn btn-success" type="submit"(click)="test(fname.value,ename.value,konTlf.value,info.value,trinn.value,klasse.value)">Test</button>
+ 
+ <button id="btn" class="btn btn-success" type="submit"(click)="addElev(fname.value,ename.value,konTlf.value,info.value,trinn.value,klasse.value)">Legg til</button>
                                                                      <!--fname.value ename: , tlf:  info: string, trinn: number, klasse: string-->
  </form>
 </div>
